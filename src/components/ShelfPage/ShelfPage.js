@@ -1,7 +1,10 @@
 import React, { useEffect, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import AddForm from '../AddForm/AddForm';
 
 function ShelfPage() {
+
+ const store = useSelector(store => store.user)
 
   let dispatch = useDispatch();
 
@@ -34,6 +37,7 @@ function ShelfPage() {
         )
       })}
       <p>All of the available items can be seen here.</p>
+      {store.id && <AddForm />}
     </div>
     </>
   );
