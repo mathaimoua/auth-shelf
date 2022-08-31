@@ -15,3 +15,6 @@ CREATE TABLE "item" (
     "image_url" VARCHAR (2083),
     "user_id" INT REFERENCES "user"
 );
+
+INSERT INTO "item" ("description", "image_url", "user_id")
+VALUES ('cool cat', 'https://pbs.twimg.com/profile_images/3746761376/1adfb9f32c22458ffa418b6604a630c6_400x400.jpeg', '1');
