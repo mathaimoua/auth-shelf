@@ -1,8 +1,12 @@
+import React from 'react';
+import AddForm from '../AddForm/AddForm';
+import {useSelector} from 'react-redux'
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-
 function ShelfPage() {
+
+ const store = useSelector(store => store.user)
 
   let dispatch = useDispatch();
 
@@ -12,10 +16,12 @@ function ShelfPage() {
     })
   }, [])
 
+
   return (
     <div className="container">
       <h2>Shelf</h2>
       <p>All of the available items can be seen here.</p>
+      {store.id && <AddForm />}
     </div>
   );
 }
