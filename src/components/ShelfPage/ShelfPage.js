@@ -1,10 +1,21 @@
 import React from 'react';
 import AddForm from '../AddForm/AddForm';
 import {useSelector} from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function ShelfPage() {
 
-  const store = useSelector(store => store.user)
+ const store = useSelector(store => store.user)
+
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: 'GET_ITEMS'
+    })
+  }, [])
+
 
   return (
     <div className="container">
@@ -16,3 +27,12 @@ function ShelfPage() {
 }
 
 export default ShelfPage;
+
+
+// to do: 
+// get information from DB
+  // make a getRoute
+// put into reducer
+  // make a reducer
+// map through it
+// display it on DOM.  
