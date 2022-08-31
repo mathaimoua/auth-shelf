@@ -1,7 +1,17 @@
 import React from 'react';
 import { useReducer } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function ShelfPage() {
+
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: 'GET_ITEMS'
+    })
+  }, [])
 
   const deleteItem = (itemID) => {
     // might have to loop but i dont think so?
@@ -27,3 +37,12 @@ function ShelfPage() {
 }
 
 export default ShelfPage;
+
+
+// to do: 
+// get information from DB
+  // make a getRoute
+// put into reducer
+  // make a reducer
+// map through it
+// display it on DOM.  
