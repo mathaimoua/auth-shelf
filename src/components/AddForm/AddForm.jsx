@@ -12,6 +12,7 @@ function AddForm(){
   const handleSubmit = () => {
     // console.log(newItem)
     dispatch({type: 'ADD_ITEM', payload: newItem})
+    setNewItem({desc: '', url: ''})
   }
 
   const handleDescChange = (event) => {
