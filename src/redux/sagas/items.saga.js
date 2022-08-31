@@ -15,8 +15,18 @@ function* getItems() {
     }
 }
 
+function* addItem(action) {
+    try {
+      yield axios.post('/api/shelf', action.payload)
+      yield put({type: 'GET_ITEMS'})
+    } catch (error) {
+      console.log('User get request failed', error);
+    }
+  }
+
 function* itemSaga() {
     yield takeLatest('GET_ITEMS', getItems)
+    yield takeLatest('ADD_ITEM', addItem);
 }
 
 export default itemSaga
