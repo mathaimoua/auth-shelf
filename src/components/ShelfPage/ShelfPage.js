@@ -1,7 +1,7 @@
 import React from 'react';
 import AddForm from '../AddForm/AddForm';
 import {useSelector} from 'react-redux'
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 function ShelfPage() {
