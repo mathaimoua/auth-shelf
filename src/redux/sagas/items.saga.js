@@ -24,9 +24,19 @@ function* addItem(action) {
     }
   }
 
+  function* deleteItem(action) {
+    try {
+      yield axios.delete(`/api/shelf/${action.payload}`)
+      yield put ({type: 'GET_ITEMS'})
+    } catch (err) {
+      console.error('error in delete', err)
+    }
+  }
+
 function* itemSaga() {
     yield takeLatest('GET_ITEMS', getItems)
     yield takeLatest('ADD_ITEM', addItem);
+    yield takeLatest('DELETE', deleteItem)
 }
 
 export default itemSaga
