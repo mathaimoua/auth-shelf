@@ -15,13 +15,21 @@ function ShelfPage() {
   }, [])
 
   const items = useSelector(store => store.items)
+  const user = useSelector(store => store.user)
 
-  // const deleteItem = (itemID) => {
-  //   // might have to loop but i dont think so?
-  //   if (user.id === itemID) {
-  //     <button onClick={() => handleDelete()}>delete</button>
-  //   }
-  // }
+  const handleDelete = (id) => {
+    dispatch ({
+      type: 'DELETE',
+      payload : id
+    })
+  }
+
+  const deleteItem = (itemID) => {
+    // might have to loop but i dont think so?
+    if (user.id === itemID) {
+      return <button onClick={() => handleDelete(itemID)}>delete</button>
+    }
+  }
 
   return (
     <>
@@ -32,7 +40,7 @@ function ShelfPage() {
           <div>
             <p key={item.id}>{item.description}</p>
             <img src={item.image_url} />
-            {/* {deleteItem(item.user_id)} */}
+            {deleteItem(item.user_id)}
           </div>
         )
       })}

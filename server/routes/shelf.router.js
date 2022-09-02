@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
@@ -40,7 +41,16 @@ router.post('/', (req, res) => {
  * Delete an item if it's something the logged in user added
  */
 router.delete('/:id', (req, res) => {
-  // endpoint functionality
+  const queryText =`
+  DELETE FROM "item"
+  WHERE "id" = $1;`;
+  pool.query(queryText, [req.params.id])
+  .then(response => {
+    res.sendStatus(200)
+  }).catch(err => {
+    console.log(err)
+    res.sendStatus(500)
+  })
 });
 
 /**
